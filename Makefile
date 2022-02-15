@@ -22,10 +22,10 @@ STL_FORMAT=binstl
 build: parts_only demo_only
 
 # Only build parts
-parts_only: 0-way.stl 1-way.stl 2-way.stl 3-way.stl 4-way.stl 5-way.stl resevoir.stl tray.stl tube_with_hole.stl cover.stl 
+parts_only: 0-way.stl 1-way.stl 2-way.stl 3-way.stl 4-way.stl 5-way.stl resevoir.stl tray.stl tube_with_hole.stl cover.stl planter.stl
 
 # Only build demos
-demo_only: demo_all.stl demo_assembled.stl demo_planter.stl demo_tray.stl demo_xways.stl planter.stl
+demo_only: demo_all.stl demo_assembled.stl demo_planter.stl demo_tray.stl demo_xways.stl 
 
 # Creates build folder
 $(BUILD_FOLDER):
