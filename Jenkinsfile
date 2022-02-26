@@ -1,4 +1,4 @@
-def src_folder = new File('src/')
+def src_folder = new File('./src/')
 def parallelStagesMap
 
 def generateStage(job) {
