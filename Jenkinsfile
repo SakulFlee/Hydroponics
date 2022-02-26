@@ -42,20 +42,24 @@ pipeline {
     }
     stage('pre-Build') {
       steps {
-        script {
-          System.getenv().each {
-            println it
-          }
-          parallelStagesMap = src_folder.eachFile {
-            ["${it}" : generateStage(it)]
+        container('main') {
+          script {
+            System.getenv().each {
+              println it
+            }
+            parallelStagesMap = src_folder.eachFile {
+              ["${it}" : generateStage(it)]
+            }
           }
         }
       }
     }
     stage('Build') {
       steps {
-        script {
-          parallel parallelStagesMap
+        container('main') {
+          script {
+            parallel parallelStagesMap
+          }
         }
       }
     }
