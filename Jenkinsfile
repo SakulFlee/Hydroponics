@@ -1,3 +1,14 @@
+def src_folder = new File('src/')
+def parallelStagesMap
+
+def generateStage(job) {
+  return {
+    stage("stage: ${job}") {
+      echo "This is ${job}." // TODO
+    }
+  }
+}
+
 pipeline {
   agent {
     kubernetes {
@@ -29,10 +40,19 @@ pipeline {
         }
       }
     }
+    stage('pre-Build') {
+      steps {
+        script {
+          parallelStagesMap = src_folder.eachFile {
+            ["${it}" : generateStage(it)]
+          }
+        }
+      }
+    }
     stage('Build') {
       steps {
-        container('main') {
-          sh 'make'
+        script {
+          parallel parallelStagesMap
         }
       }
     }
