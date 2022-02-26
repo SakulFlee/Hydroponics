@@ -34,7 +34,7 @@ pipeline {
       steps {
         container('main') {
           sh 'apt-get update'
-          sh 'apt-get upgrade'
+          sh 'apt-get upgrade -y'
           sh 'apt-get install -y openscad'
           sh 'apt-get install -y make'
         }
