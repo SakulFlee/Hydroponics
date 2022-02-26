@@ -1,0 +1,127 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Make: Clean",
+            "type": "shell",
+            "command": "make clean",
+            "group": "build"
+        },
+        {
+            "label": "Make: Build (ALL)",
+            "type": "shell",
+            "command": "make all",
+            "group": "build"
+        },
+        {
+            "label": "Make: Build parts",
+            "type": "shell",
+            "command": "make parts_only",
+            "group": "build"
+        },
+        {
+            "label": "Make: Build demos",
+            "type": "shell",
+            "command": "make demos_only",
+            "group": "build"
+        },
+        {
+            "label": "Make: Build 0-way.stl",
+            "type": "shell",
+            "command": "make 0-way.stl",
+            "group": "build"
+        },
+        {
+            "label": "Make: Build 1-way.stl",
+            "type": "shell",
+            "command": "make 1-way.stl",
+            "group": "build"
+        },
+        {
+            "label": "Make: Build 2-way.stl",
+            "type": "shell",
+            "command": "make 2-way.stl",
+            "group": "build"
+        },
+        {
+            "label": "Make: Build 3-way.stl",
+            "type": "shell",
+            "command": "make 3-way.stl",
+            "group": "build"
+        },
+        {
+            "label": "Make: Build 4-way.stl",
+            "type": "shell",
+            "command": "make 4-way.stl",
+            "group": "build"
+        },
+        {
+            "label": "Make: Build 5-way.stl",
+            "type": "shell",
+            "command": "make 5-way.stl",
+            "group": "build"
+        },
+        {
+            "label": "Make: Build resevoir.stl",
+            "type": "shell",
+            "command": "make resevoir.stl",
+            "group": "build"
+        },
+        {
+            "label": "Make: Build tray.stl",
+            "type": "shell",
+            "command": "make tray.stl",
+            "group": "build"
+        },
+        {
+            "label": "Make: Build tube_with_hole.stl",
+            "type": "shell",
+            "command": "make tube_with_hole.stl",
+            "group": "build"
+        },
+        {
+            "label": "Make: Build cover.stl ",
+            "type": "shell",
+            "command": "make cover.stl ",
+            "group": "build"
+        },
+        {
+            "label": "Make: Build planter.stl",
+            "type": "shell",
+            "command": "make planter.stl",
+            "group": "build"
+        },
+        {
+            "label": "Make: Build demo_all.stl",
+            "type": "shell",
+            "command": "make demo_all.stl",
+            "group": "build"
+        },
+        {
+            "label": "Make: Build demo_assembled.stl",
+            "type": "shell",
+            "command": "make demo_assembled.stl",
+            "group": "build"
+        },
+        {
+            "label": "Make: Build demo_planter.stl",
+            "type": "shell",
+            "command": "make demo_planter.stl",
+            "group": "build"
+        },
+        {
+            "label": "Make: Build demo_tray.stl",
+            "type": "shell",
+            "command": "make demo_tray.stl",
+            "group": "build"
+        },
+        {
+            "label": "Make: Build demo_xways.stl",
+            "type": "shell",
+            "command": "make demo_xways.stl",
+            "group": "build"
+        }
+    ]
+}
