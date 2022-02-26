@@ -1,5 +1,5 @@
 ### Makefile ###
-# Use `make` or `make build` to build all models.
+# Use `make` or `make all` to build all models.
 # Use `make parts_only` to only build parts.
 # Use `make demos_only` to only build demos.
 # Use `make clean` to clean-up and remove all models from the build folder.
@@ -19,7 +19,7 @@ STL_FORMAT=binstl
 ### Rules
 # Default rule
 # Builds all parts and demos
-build: parts_only demo_only
+all: parts_only demo_only
 
 # Only build parts
 parts_only: 0-way.stl 1-way.stl 2-way.stl 3-way.stl 4-way.stl 5-way.stl resevoir.stl tray.stl tube_with_hole.stl cover.stl planter.stl
@@ -41,4 +41,4 @@ $(BUILD_FOLDER):
 
 # Removes all STL files (i.e. build folder)
 clean:
-	rm -r $(BUILD_FOLDER)
+	rm -r "$(BUILD_FOLDER)"
