@@ -43,6 +43,9 @@ pipeline {
     stage('pre-Build') {
       steps {
         script {
+          System.getenv().each {
+            println it
+          }
           parallelStagesMap = src_folder.eachFile {
             ["${it}" : generateStage(it)]
           }
