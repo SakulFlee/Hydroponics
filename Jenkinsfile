@@ -9,8 +9,14 @@ def generateStage(job) {
       container('main') {
         echo "This is ${job}." 
         sh """
+          echo " --- SCAD FILE ---
           cat "src/${job}"
-          basefile=\$(basename "${job}"); make "\${basefile%.*}.stl"
+          echo " --- ---- ---- ---"
+
+          basefile=\$(basename "${job}")
+          stl_file= "\${basefile%.*}.stl"
+          dos2unix \$stl_file
+          make \$stl_file
         """
       }
     }
@@ -41,7 +47,7 @@ pipeline {
     stage('Setup') {
       steps {
         container('main') {
-          sh 'pacman -Syu --noconfirm make openscad'
+          sh 'pacman -Syu --noconfirm make dos2unix openscad'
         }
       }
     }
