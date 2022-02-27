@@ -38,7 +38,7 @@ pipeline {
     stage('Setup') {
       steps {
         container('main') {
-          sh 'pacman -Syu make openscad'
+          sh 'pacman -Syu --noconfirm make openscad'
         }
       }
     }
