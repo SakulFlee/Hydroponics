@@ -29,7 +29,6 @@ def generateStage(job, quality) {
   return {
     stage("stage: ${job}") {
       container('main') {
-        echo "This is ${job}." 
         sh """
           basefile=\$(basename "${job}")
           scad_file="\${basefile%.*}.scad"
