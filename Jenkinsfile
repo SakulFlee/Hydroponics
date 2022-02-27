@@ -36,7 +36,7 @@ def generateStage(job, quality) {
           
           if [ ! -d  build/ ]; then mkdir build/; fi
           openscad \
-            -D '\$\$fn'=${quality} \
+            -D "\$\$fn=${quality}" \
             -o build/\$stl_file \
             src/\$scad_file
         """
