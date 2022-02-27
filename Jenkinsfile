@@ -13,7 +13,6 @@ def generateStage(job) {
           scad_file="\${basefile%.*}.scad"
           stl_file="\${basefile%.*}.stl"
           
-          # make \$stl_file
           mkdir build/
           openscad --D $$fn=100 -o build/\$stl_file \$scad_file
         """
