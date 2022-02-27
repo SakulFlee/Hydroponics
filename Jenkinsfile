@@ -16,6 +16,7 @@ def generateStage(job) {
           if [ ! -d  build/ ]; then mkdir build/; fi
           openscad --D \$\$fn=100 -o build/\$stl_file src/\$scad_file
         """
+        archiveArtifacts artifacts: '**/*.stl', fingerprint: true
       }
     }
   }
