@@ -10,7 +10,7 @@ def generateStage(job) {
         echo "This is ${job}." 
         sh """
           cat "src/${job}"
-          make "\${\$(basename "${job}")%.*}.stl"
+          basefile=\$(basename "${job}") make "\${basefile%.*}.stl"
         """
       }
     }
