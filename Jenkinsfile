@@ -14,8 +14,9 @@ def generateStage(job) {
           echo " --- ---- ---- ---"
 
           basefile=\$(basename "${job}")
+          scad_file="\${basefile%.*}.scad"
           stl_file="\${basefile%.*}.stl"
-          dos2unix "src/\$stl_file"
+          dos2unix "src/\$scad_file"
           make \$stl_file
         """
       }
