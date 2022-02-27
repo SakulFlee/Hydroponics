@@ -1,4 +1,4 @@
-def sources = ["cake", "abc"]
+def sources = ["0-way.stl", "1-way.stl", "2-way.stl", "3-way.stl", "4-way.stl", "5-way.stl", "cover.stl", "demo_all.stl", "demo_assembled.stl", "demo_planter.stl", "demo_tray.stl", "demo_xways.stl", "planter.stl", "resevoir.stl", "tray.stl", "tube_with_hole.stl", "x-way.stl"]
 def parallelStagesMap = sources.collectEntries {
   ["${it}" : generateStage(it)]
 }
@@ -6,7 +6,10 @@ def parallelStagesMap = sources.collectEntries {
 def generateStage(job) {
   return {
     stage("stage: ${job}") {
-      echo "This is ${job}." // TODO
+      container('main') {
+        echo "This is ${job}." 
+        sh "make ${job}"
+      }
     }
   }
 }
@@ -37,7 +40,7 @@ pipeline {
         container('main') {
           sh 'apt-get update'
           sh 'apt-get upgrade -y'
-          sh 'apt-get install -y openscad'
+          sh 'apt-get install -y openstl'
           sh 'apt-get install -y make'
         }
       }
