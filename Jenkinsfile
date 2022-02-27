@@ -1,4 +1,4 @@
-def sources = ["0-way.stl", "1-way.stl", "2-way.stl", "3-way.stl", "4-way.stl", "5-way.stl", "cover.stl", "demo_all.stl", "demo_assembled.stl", "demo_planter.stl", "demo_tray.stl", "demo_xways.stl", "planter.stl", "resevoir.stl", "tray.stl", "tube_with_hole.stl", "x-way.stl"]
+def sources = ["0-way.scad", "1-way.scad", "2-way.scad", "3-way.scad", "4-way.scad", "5-way.scad", "cover.scad", "demo_all.scad", "demo_assembled.scad", "demo_planter.scad", "demo_tray.scad", "demo_xways.scad", "planter.scad", "resevoir.scad", "tray.scad", "tube_with_hole.scad", "x-way.scad"]
 def parallelStagesMap = sources.collectEntries {
   ["${it}" : generateStage(it)]
 }
@@ -8,7 +8,14 @@ def generateStage(job) {
     stage("stage: ${job}") {
       container('main') {
         echo "This is ${job}." 
-        sh "make ${job}"
+        sh """
+          base_filename = $(basename "${job}")
+          filename_scad = "${base_filename%.*}.scad"
+          filename_stl = "${base_filename%.*}.stl"
+
+          cat "src/$filename_scad"
+          make "$filename_stl"
+        """
       }
     }
   }
