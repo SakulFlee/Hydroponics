@@ -27,7 +27,7 @@ def parallelStagesMap = UHQ + HQ + NQ + LQ + ULQ
 
 def generateStage(job, quality) {
   return {
-    stage("stage: ${job}_${quality}") {
+    stage("stage: ${job}_Q${quality}") {
       container('main') {
         sh """
           basefile=\$(basename "${job}")
