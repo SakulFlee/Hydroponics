@@ -1,10 +1,6 @@
 // Source fiels
 def sources = ["0-way.scad", "1-way.scad", "2-way.scad", "3-way.scad", "4-way.scad", "5-way.scad", "cover.scad", "demo_all.scad", "demo_assembled.scad", "demo_planter.scad", "demo_tray.scad", "demo_xways.scad", "planter.scad", "resevoir.scad", "tray.scad", "tube_with_hole.scad"]
 
-// Ultra High-Quality Models
-def UHQ = sources.collectEntries {
-  ["${it}_UHQ" : generateStage(it, 300)]
-}
 // High-Quality Models
 def HQ = sources.collectEntries {
   ["${it}_HQ" : generateStage(it, 150)]
@@ -15,15 +11,11 @@ def NQ = sources.collectEntries {
 }
 // Low-Quality Models
 def LQ = sources.collectEntries {
-  ["${it}_LQ" : generateStage(it, 50)]
-}
-// Ultra Low-Quality Models
-def ULQ = sources.collectEntries {
-  ["${it}_ULQ" : generateStage(it, 25)]
+  ["${it}_LQ" : generateStage(it, 25)]
 }
 
 // All stages combined
-def parallelStagesMap = UHQ + HQ + NQ + LQ + ULQ
+def parallelStagesMap = HQ + NQ + LQ
 
 def generateStage(job, quality) {
   return {
