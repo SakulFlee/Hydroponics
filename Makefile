@@ -7,7 +7,7 @@
 
 ### Settings
 # Path to OpenSCAD (use `openscad` if in PATH)
-OSCAD=C:\Program Files\OpenSCAD\openscad
+OSCAD=openscad
 # Folder containing all SCAD files
 SOURCE_FOLDER=src
 # Folder receiving all STL files
