@@ -9,14 +9,18 @@ def generateStage(job) {
       container('main') {
         echo "This is ${job}." 
         sh """
-          echo " --- SCAD FILE ---"
-          cat "src/${job}"
-          echo " --- ---- ---- ---"
+          echo "BEFORE"
+          cat -A "src/${job}"
 
           basefile=\$(basename "${job}")
           scad_file="\${basefile%.*}.scad"
           stl_file="\${basefile%.*}.stl"
+          
           dos2unix "src/\$scad_file"
+
+          echo "AFTER"
+          cat -A "src/${job}"
+
           make \$stl_file
         """
       }
