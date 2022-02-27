@@ -59,6 +59,9 @@ pipeline {
                 limits:
                   memory: 2Gb
                   cpu: "1"
+                requests:
+                  memory: 2Gb
+                  cpu: "1"
         '''
     }
   }
