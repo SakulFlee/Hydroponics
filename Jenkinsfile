@@ -57,7 +57,7 @@ pipeline {
                 runAsGroup: 0
               resources:
                 limits:
-                  memory: 2Gb
+                  memory: 2G
                   cpu: "1"
         '''
     }
