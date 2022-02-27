@@ -32,7 +32,7 @@ def generateStage(job, quality) {
         sh """
           basefile=\$(basename "${job}")
           scad_file="\${basefile%.*}.scad"
-          stl_file="\${basefile%.*}_Q${quality}.stl"
+          stl_file="\${basefile%.*}_Q\${quality}.stl"
           
           if [ ! -d  build/ ]; then mkdir build/; fi
           openscad --D \\$\$\fn=${quality} -o build/\$stl_file src/\$scad_file
