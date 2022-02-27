@@ -23,7 +23,7 @@ pipeline {
         spec:
           containers:
             - name: main
-              image: ubuntu:latest
+              image: archlinux:latest
               command:
                 - cat
               tty: true
@@ -38,10 +38,7 @@ pipeline {
     stage('Setup') {
       steps {
         container('main') {
-          sh 'apt-get update'
-          sh 'apt-get upgrade -y'
-          sh 'apt-get install -y openscad'
-          sh 'apt-get install -y make'
+          sh 'pacman -Syu make openscad'
         }
       }
     }
