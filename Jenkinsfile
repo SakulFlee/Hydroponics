@@ -40,7 +40,7 @@ pipeline {
         container('main') {
           sh 'apt-get update'
           sh 'apt-get upgrade -y'
-          sh 'apt-get install -y openstl'
+          sh 'apt-get install -y openscad'
           sh 'apt-get install -y make'
         }
       }
