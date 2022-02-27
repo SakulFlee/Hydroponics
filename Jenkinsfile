@@ -1,5 +1,7 @@
-def src_folder = new File('./src/')
-def parallelStagesMap
+def sources = ["cake", "abc"]
+def parallelStagesMap = sources.each {
+  ["${it}" : generateStage(it)]
+}
 
 def generateStage(job) {
   return {
@@ -37,20 +39,6 @@ pipeline {
           sh 'apt-get upgrade -y'
           sh 'apt-get install -y openscad'
           sh 'apt-get install -y make'
-        }
-      }
-    }
-    stage('pre-Build') {
-      steps {
-        container('main') {
-          script {
-            System.getenv().each {
-              println it
-            }
-            parallelStagesMap = src_folder.eachFile {
-              ["${it}" : generateStage(it)]
-            }
-          }
         }
       }
     }
