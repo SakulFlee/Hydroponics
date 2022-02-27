@@ -16,7 +16,7 @@ def generateStage(job) {
           scad_file="\${basefile%.*}.scad"
           stl_file="\${basefile%.*}.stl"
           
-          dos2unix "src/\$scad_file"
+          unix2dos "src/\$scad_file"
 
           echo "AFTER"
           cat -A "src/${job}"
