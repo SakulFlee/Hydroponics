@@ -65,7 +65,6 @@ pipeline {
         '''
     }
   }
-  options { disableConcurrentBuilds() }
   stages {
     stage('Setup') {
       steps {
