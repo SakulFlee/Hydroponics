@@ -63,6 +63,13 @@ pipeline {
                 allowPivilegedEscalation: true
                 runAsUser: 0
                 runAsGroup: 0
+              resources:
+                limits:
+                  memory: 2Gi
+                  cpu: "2"
+                requests:
+                  memory: 512Mi
+                  cpu: 512m
         '''
     }
   }
