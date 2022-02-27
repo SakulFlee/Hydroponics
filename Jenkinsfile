@@ -9,7 +9,7 @@ def generateStage(job) {
       container('main') {
         echo "This is ${job}." 
         sh """
-          echo " --- SCAD FILE ---
+          echo " --- SCAD FILE ---"
           cat "src/${job}"
           echo " --- ---- ---- ---"
 
