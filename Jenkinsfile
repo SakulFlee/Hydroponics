@@ -1,5 +1,5 @@
 def sources = ["cake", "abc"]
-def parallelStagesMap = sources.each {
+def parallelStagesMap = sources.collectEntries {
   ["${it}" : generateStage(it)]
 }
 
