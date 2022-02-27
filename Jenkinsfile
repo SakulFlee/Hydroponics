@@ -3,23 +3,23 @@ def sources = ["0-way.scad", "1-way.scad", "2-way.scad", "3-way.scad", "4-way.sc
 
 // Ultra High-Quality Models
 def UHQ = sources.collectEntries {
-  ["${it}" : generateStage(it, 300)]
+  ["${it}_UHQ" : generateStage(it, 300)]
 }
 // High-Quality Models
 def HQ = sources.collectEntries {
-  ["${it}" : generateStage(it, 150)]
+  ["${it}_HQ" : generateStage(it, 150)]
 }
 // Normal-Quality Models
 def NQ = sources.collectEntries {
-  ["${it}" : generateStage(it, 100)]
+  ["${it}_NQ" : generateStage(it, 100)]
 }
 // Low-Quality Models
 def LQ = sources.collectEntries {
-  ["${it}" : generateStage(it, 50)]
+  ["${it}_LQ" : generateStage(it, 50)]
 }
 // Ultra Low-Quality Models
 def ULQ = sources.collectEntries {
-  ["${it}" : generateStage(it, 25)]
+  ["${it}_ULQ" : generateStage(it, 25)]
 }
 
 // All stages combined
