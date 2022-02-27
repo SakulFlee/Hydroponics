@@ -9,10 +9,6 @@ def generateStage(job) {
       container('main') {
         echo "This is ${job}." 
         sh """
-          base_filename = 
-          filename_scad = "\${base_filename%.*}.scad"
-          filename_stl = "\${base_filename%.*}.stl"
-
           cat "src/${job}"
           make "\${\$(basename "${job}")%.*}.stl"
         """
