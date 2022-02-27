@@ -14,9 +14,6 @@ def LQ = sources.collectEntries {
   ["${it}_LQ" : generateStage(it, 25)]
 }
 
-// All stages combined
-def parallelStagesMap = HQ + NQ + LQ
-
 def generateStage(job, quality) {
   return {
     stage("stage: ${job}_Q${quality}") {
@@ -73,11 +70,29 @@ pipeline {
         }
       }
     }
-    stage('Build') {
+    stage('LQ') {
       steps {
         container('main') {
           script {
-            parallel parallelStagesMap
+            parallel LQ
+          }
+        }
+      }
+    }
+    stage('NQ') {
+      steps {
+        container('main') {
+          script {
+            parallel NQ
+          }
+        }
+      }
+    }
+    stage('HQ') {
+      steps {
+        container('main') {
+          script {
+            parallel HQ
           }
         }
       }
