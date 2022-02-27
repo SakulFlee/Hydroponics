@@ -9,19 +9,13 @@ def generateStage(job) {
       container('main') {
         echo "This is ${job}." 
         sh """
-          echo "BEFORE"
-          cat -A "src/${job}"
-
           basefile=\$(basename "${job}")
           scad_file="\${basefile%.*}.scad"
           stl_file="\${basefile%.*}.stl"
           
-          unix2dos "src/\$scad_file"
-
-          echo "AFTER"
-          cat -A "src/${job}"
-
-          make \$stl_file
+          # make \$stl_file
+          mkdir build/
+          openscad --D $$fn=100 -o build/\$stl_file \$scad_file
         """
       }
     }
@@ -37,7 +31,7 @@ pipeline {
         spec:
           containers:
             - name: main
-              image: archlinux:latest
+              image: ubuntu:latest
               command:
                 - cat
               tty: true
@@ -52,7 +46,9 @@ pipeline {
     stage('Setup') {
       steps {
         container('main') {
-          sh 'pacman -Syu --noconfirm make dos2unix openscad'
+          sh 'apt-get update'
+          sh 'apt-get upgrade -y'
+          sh 'apt-get install -y openscad'
         }
       }
     }
