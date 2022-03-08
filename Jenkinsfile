@@ -1,5 +1,5 @@
 // Source fiels
-def sources = ["0_way.scad", "1_way.scad", "2_way.scad", "3_way.scad", "4_way.scad", "5_way.scad", "cover.scad", "demo_all.scad", "demo_assembled.scad", "demo_planter.scad", "demo_tray.scad", "demo_xways.scad", "planter.scad", "resevoir.scad", "tray.scad", "tube_with_hole.scad", "demo_sidecut.scad"]
+def sources = ["0_way.scad", "1_way.scad", "2_way.scad", "3_way.scad", "4_way.scad", "5_way.scad", "cover.scad", "demo_all.scad", "demo_assembled.scad", "demo_planter.scad", "demo_tray.scad", "demo_xways.scad", "planter.scad", "resevoir.scad", "tray.scad", "tube_with_hole.scad", "demo_sidecut.scad", "stand.scad"]
 
 // High-Quality Models
 def HQ = sources.collectEntries {
