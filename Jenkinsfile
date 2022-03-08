@@ -59,7 +59,10 @@ pipeline {
         '''
     }
   }
-  options { disableConcurrentBuilds() }
+  options { 
+    disableConcurrentBuilds() 
+    timeout(time: 2, unit: 'HOURS')
+  }
   stages {
     stage('Setup') {
       steps {
