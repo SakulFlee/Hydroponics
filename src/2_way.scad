@@ -17,14 +17,8 @@
  * Unfortunately, this breaks OpenSCAD's customizer.
  */
 include<_variables.scad>;
+use<x_way.scad>;
 
-// Parts
-module cover()
-{
-	difference()
-	{
-		cylinder(h = $joining_height, r = $joining_radius, center = true);
-		cylinder(h = $joining_height + 2, r = $hole_radius, center = true);
-	}
-}
-cover();
+// ---
+
+xWay(2);
