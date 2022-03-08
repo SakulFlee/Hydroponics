@@ -1,3 +1,4 @@
+include<_variables.scad>;
 use <x-way.scad>;
 
 /*  Check settings ("customizer variables") in x-way.scad.

@@ -1,23 +1,4 @@
-/* [Render] */
-$fa=1;
-$fs=0.4;
-$fn=10;
-
-/* [General] */
-$wall_thickness = 2.5;
-
-/* [Main Body] */
-$main_height = 100;
-$main_radius = 35;
-
-/* [Tubes] */
-$tube_height = $main_height / 2;
-$tube_radius = $main_radius - 15;
-
-/* [Planter] */
-$stripes_count = 8;
-$stripe_width = 5.0;
-$planter_hole_radius = 2.5;
+include<_variables.scad>;
 
 // Parts
 module planter_frame(r, th) {

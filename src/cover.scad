@@ -1,19 +1,4 @@
-/* [Render] */
-$fa=1;
-$fs=0.4;
-$fn=10;
-$show_helpers = false;
-
-/* [General] */
-$wall_thickness = 2.5;
-
-/* [Main Body] */
-$main_radius = 35;
-$joining_height = 10;
-$joining_radius = $main_radius - $wall_thickness / 2;
-
-/* [Cover] */
-$hole_radius = $main_radius / 2.5;
+include<_variables.scad>;
 
 // Parts
 module cover() {

@@ -1,16 +1,4 @@
-/* [Render] */
-$fa=1;
-$fs=0.4;
-$fn=10;
-
-/* [General] */
-$wall_thickness = 2.5;
-
-/* [Main Body] */
-$main_height = 100;
-$main_radius = 35;
-$joining_height = 10;
-$joining_radius = $main_radius - $wall_thickness / 2;
+include<_variables.scad>;
 
 // Parts
 module main_body_outer() {
