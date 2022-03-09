@@ -17,14 +17,29 @@
  * Unfortunately, this breaks OpenSCAD's customizer.
  */
 include<_variables.scad>;
+use<tray.scad>;
 
 // Parts
+
 module cover()
 {
 	difference()
 	{
+		cylinder(h = $joining_height, r1 = $tray_radius, r2 = $water_colon_radius / 2, center = true);
+		translate([ 0, 0, -$wall_thickness / 2 ])
+		cylinder(h = $joining_height, r1 = $tray_radius, r2 = $water_colon_radius / 2, center = true);
+
+		// water column
+		cylinder(h = $joining_height + 1, r = $water_colon_radius - $wall_thickness + 1, center = true);
+
+		make_holes_round(total_radius = $tray_radius - 2, depth_steps = 5, angle_steps = 15,
+		                 thickness = $joining_height + 2, radius = 0.5, center_offset = $water_colon_radius);
+	}
+	difference()
+	{
 		cylinder(h = $joining_height, r = $joining_radius, center = true);
-		cylinder(h = $joining_height + 2, r = $hole_radius, center = true);
+		cylinder(h = $joining_height + 1, r = $joining_radius - $wall_thickness, center = true);
 	}
 }
+
 cover();
