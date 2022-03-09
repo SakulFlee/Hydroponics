@@ -1,15 +1,17 @@
-include<_variables.scad> use<demo_assembled.scad>
+include<_variables.scad> 
+use<demo_assembled.scad>
 
-    $sidecut_dim = 150;
-$sidecut_height = 750;
+$sidecut_x = 150;
+$sidecut_y = 300;
+$sidecut_z = 1000;
 
 $t = 0.65; // Comment out for animation to work!
 
 difference()
 {
 	demo_assembled();
-	translate([ $t * -($sidecut_dim / 2) + 50, -($sidecut_dim / 2), 0 ])
+	translate([ $t * -($sidecut_x / 2) + 50, -($sidecut_y / 2), -100 ])
 	{
-		cube([ $sidecut_dim, $sidecut_dim, $sidecut_height ]);
+		cube([ $sidecut_x, $sidecut_y, $sidecut_z ]);
 	}
 }

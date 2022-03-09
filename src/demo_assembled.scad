@@ -1,11 +1,10 @@
-include<x_way.scad>
+include<x_way.scad> use<resevoir.scad> use<tube_with_hole.scad> use<planter.scad> use<cover.scad> use<stand.scad>
 
-    use<resevoir.scad> use<tube_with_hole.scad> use<planter.scad> use<cover.scad>
-
-        // use <tray.scad>
-
-        module demo_assembled()
+    module demo_assembled()
 {
+	// Stand
+	translate([ 0, 0, -$main_height / 2 - $joining_height ])
+	stand();
 	// Resevoir
 	translate([ 0, 0, 0 ])
 	resevoir();
@@ -36,7 +35,11 @@ include<x_way.scad>
 	translate([ 0, 0, 600 - $joining_height - $joining_height - $joining_height ])
 	xWay(4);
 	// 5-Way
-	translate([ 0, 0, 650 - $joining_height - $joining_height - $joining_height - $joining_height / 2 ])
+	translate([ 0, 0, 700 - $joining_height - $joining_height - $joining_height - $joining_height ])
+	xWay(5);
+	// Cover
+	translate([ 0, 0, 750 - $joining_height - $joining_height - $joining_height - $joining_height ])
 	cover();
 }
+
 demo_assembled();
