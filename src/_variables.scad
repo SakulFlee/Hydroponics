@@ -1,8 +1,7 @@
 /* [Render] */
-$fa=1;
-$fs=0.4;
-$fn=10;
-$show_helpers = false;
+$fa = 1;
+$fs = 0.4;
+$fn = 10;
 
 /* [General] */
 $wall_thickness = 2;
