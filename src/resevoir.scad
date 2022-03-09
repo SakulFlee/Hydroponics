@@ -24,6 +24,6 @@ module resevoir()
 {
 	xWay(0, false, false);
 	translate([ 0, 0, -($main_height / 2) ])
-	cylinder(h = $joining_height, r = $joining_radius, center = true);
+	cylinder(h = $wall_thickness, r = $joining_radius, center = true);
 }
 resevoir();
