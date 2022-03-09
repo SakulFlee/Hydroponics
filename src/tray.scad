@@ -18,28 +18,55 @@
  */
 include<_variables.scad>;
 
-// Parts
-module tray()
+module make_holes_squared(total_radius, steps, thickness, radius, center_offset)
 {
-	distance = ($tray_radius - 5) / $tray_holes_per_rotation;
-
-	difference()
+	for (x = [-total_radius:steps:total_radius])
 	{
-		cylinder(h = $tray_thickness, r = $tray_radius, center = true);
-		cylinder(h = $tray_thickness + 1, r = $water_column_radius, center = true);
-
-		for (x = [-$tray_radius:5:$tray_radius])
+		for (y = [-total_radius:steps:total_radius])
 		{
-			for (y = [-$tray_radius:5:$tray_radius])
+			x = x + steps / 8; // No idea why it's offset ... Using 1/8th of steps seems to work.
+			y = y + steps / 8; // No idea why it's offset ... Using 1/8th of steps seems to work.
+			vec_dist = sqrt(x ^ 2 + y ^ 2);
+			if (vec_dist < total_radius - radius * 2 && vec_dist > center_offset)
 			{
-				vec_dist = sqrt(x ^ 2 + y ^ 2);
-				if (vec_dist <= $tray_radius - $tray_hole_radius && vec_dist >= $water_column_radius)
+				translate([ x, y, 0 ])
 				{
-					translate([ x, y, 0 ])
-					cylinder(h = $tray_thickness + 1, r = $tray_hole_radius, center = true);
+					cylinder(h = thickness + 1, r = radius, center = true);
 				}
 			}
 		}
+	}
+}
+
+module make_holes_round(total_radius, depth_steps, angle_steps, thickness, radius, center_offset)
+{
+	for (depth = [0:depth_steps:total_radius])
+	{
+		for (angle = [0:angle_steps:360])
+		{
+			if (abs(depth) - radius > center_offset)
+			{
+				rotate([ 0, 0, angle ])
+				{
+					translate([ depth, 0, 0 ])
+					{
+						cylinder(h = thickness + 1, r = radius, center = true);
+					}
+				}
+			}
+		}
+	}
+}
+
+// Parts
+module tray()
+{
+	difference()
+	{
+		cylinder(h = $tray_thickness, r = $tray_radius, center = true);
+		cylinder(h = $tray_thickness + 1, r = $water_colon_radius, center = true);
+
+		make_holes_squared($tray_radius, 5, $tray_thickness, $tray_hole_radius, $water_colon_radius);
 	}
 }
 
