@@ -17,11 +17,29 @@
  * Unfortunately, this breaks OpenSCAD's customizer.
  */
 include<_variables.scad>;
+use<resevoir.scad>;
 
 // Parts
-module stand()
+module stand(round_base = true)
 {
-	cube([ 100, 100, 100 ]); // TODO
+	if (round_base)
+	{
+		cylinder(h = $wall_thickness, r = $stand_radius, center = true);
+	}
+	else
+	{
+		cylinder(h = $wall_thickness, r = $stand_radius, center = true, $fn = 6);
+	}
+
+	translate([ 0, 0, $joining_height ])
+	difference()
+	{
+		cylinder(h = $joining_height, r = $main_radius + $wall_thickness, center = true);
+		cylinder(h = $joining_height, r = $main_radius, center = true);
+	}
 }
 
 stand();
+
+translate([ 0, 0, $main_height - $main_height / 2 + $joining_height ])
+% resevoir();
