@@ -93,13 +93,13 @@ module water_column()
 	{
 		difference()
 		{
-			cylinder(h = $main_height, r = $water_column_radius, center = true);
-			cylinder(h = $main_height + 1, r = $water_column_radius - $wall_thickness, center = true);
+			cylinder(h = $main_height, r = $water_colon_radius, center = true);
+			cylinder(h = $main_height + 1, r = $water_colon_radius - $wall_thickness, center = true);
 
 			// Bottom joining
 			translate([ 0, 0, -($main_height / 2 - $joining_height / 4) ])
 			{
-				cylinder(h = $joining_height / 2 + 1, r = $water_column_radius - $wall_thickness + 1, center = true);
+				cylinder(h = $joining_height / 2 + 1, r = $water_colon_radius - $wall_thickness + 1, center = true);
 			}
 		}
 	}
@@ -109,15 +109,15 @@ module water_column()
 	{
 		difference()
 		{
-			cylinder(h = $joining_height / 2, r = $water_column_radius - $wall_thickness + 1, center = true);
-			cylinder(h = $joining_height / 2 + 1, r = $water_column_radius - $wall_thickness, center = true);
+			cylinder(h = $joining_height / 2, r = $water_colon_radius - $wall_thickness + 1, center = true);
+			cylinder(h = $joining_height / 2 + 1, r = $water_colon_radius - $wall_thickness, center = true);
 		}
 	}
 }
 
 // Assembled modules
 
-module xWay(count)
+module xWay(count, include_water_collon = true, include_tray = true)
 {
 	$per_item = 180 / count;
 
@@ -143,8 +143,14 @@ module xWay(count)
 		}
 	}
 
-	translate([ 0, 0, -($main_height / 2) + $tray_thickness / 2 ])
-	tray();
+	if (include_tray)
+	{
+		translate([ 0, 0, -($main_height / 2) + $tray_thickness / 2 ])
+		tray();
+	}
 
-	water_column();
+	if (include_water_collon)
+	{
+		water_column();
+	}
 }

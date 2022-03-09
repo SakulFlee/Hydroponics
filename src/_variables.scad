@@ -33,5 +33,8 @@ $tray_radius = $main_radius - $wall_thickness;
 $tray_holes_per_rotation = 4;
 $tray_rotations = 16;
 
-/* [Water Column] */
-$water_column_radius = 5;
+/* [Water Colon] */
+$water_colon_radius = 5;
+
+/* [Stand] */
+$stand_radius = 150;
